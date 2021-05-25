@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .top{
+            height: 90px;
+            padding-left: 200px;
+            padding-top: 30px;
+            font-size: 2rem;
+            border-bottom: #f1eeee 2px solid;
+        }
+        .top span:first-child{
+            border-right: silver 2px solid;
+            padding-right: 25px;
+        }
+        .top span:nth-child(2){
+            padding-left: 25px;
+            font-size: 16px;
+            color: #b3b1b1;
+        }
+
+        .left{
+            padding-left: 300px;
+            padding-top: 50px;
+        }
+        .right{
+            padding-top: 10px;
+            padding-bottom: 10px;
+            position: relative;
+            top: -350px;
+            left: 900px;
+            border: silver 2px solid;
+            border-radius: 10px;
+            width: 423px;
+        }
+        .right div{
+            padding-top: 20px;
+            font-size: 20px;
+            color: silver;
+            margin-left: 50px;
+        }
+        .right input{
+            height: 24px;
+            font-size: 18px;
+            color: #424245;
+            letter-spacing: 1px;
+        }
+        #right_password{
+            margin-left: 70px;
+        }
+        #right_third{
+            font-size: 1rem;
+
+        }
+        .right_free_input{
+            position: relative;
+            top: 5px;
+        }
+        .register{
+            display: inline-block;
+            margin-left: 100px;
+        }
+        #right_submit_input{
+            width: 305px;
+            height: 40px;
+            /*background-color: rgba(59,120,221,0.8);*/
+            background-color: rgba(173, 177, 184, 0.8);
+            letter-spacing: 20px;
+            color: white;
+        }
+        #right_forget{
+            font-size: 16px;
+        }
+        a{
+            text-decoration: none;
+        }
+        #right_username_null,#right_password_null{
+            height: 16px;
+            margin-top: -14px;
+            margin-left: 132px;
+            color: red;
+            font-size: 16px;
+        }
+        ::placeholder {
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.3);
+        }
+    </style>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        window.onload = function (){
+            //在用户名和密码框都不为空之前，设置登录按钮不可点击
+            $('#right_submit_input').attr('disabled', true)
+            //用户名输入框失去焦点
+            $('#usernameInput-id').blur(function (){
+                if (!checkUsername()){
+                    //输入框为空
+                    $('#right_username_null').text("用户名不能为空")
+                } else if (checkPassword()){
+                    //密码框不为空
+                    $('#right_submit_input').attr('disabled', false)
+                    $('#right_submit_input').css('background-color', 'rgba(59,120,221,0.8)')
+                }
+            })
+            //密码输入框失去焦点
+            $('#passwordInput-id').blur(function (){
+                if (!checkPassword()){
+                    //输入框为空
+                    $('#right_password_null').text("密码不能为空")
+                } else if (checkUsername()){
+                    //密码框不为空
+                    $('#right_submit_input').attr('disabled', false)
+                    $('#right_submit_input').css('background-color', 'rgba(59,120,221,0.8)')
+                }
+            })
+            //用户名输入框获得焦点
+            $('#usernameInput-id').focus(function (){
+                //移除为空的提示信息
+                $('#right_username_null').text("")
+            })
+
+            //密码输入框获得焦点
+            $('#passwordInput-id').focus(function (){
+                //移除为空的提示信息
+                $('#right_password_null').text("")
+                $('#right_submit_input').attr('disabled', false)
+                $('#right_submit_input').css('background-color', 'rgba(59,120,221,0.8)')
+            })
+
+            //只有用户名和密码框都不为才能提交表单
+            document.getElementById("form").onsubmit = function (){
+                if (checkUsername() && checkPassword()){
+                    return true
+                } else {
+                    return false
+                }
+            }
+            //检查用户名是否为空
+            function checkUsername(){
+                var username = $('#usernameInput-id').val()
+                if (username == ""){
+                    //输入框为空
+                    return false
+                }
+                return true
+            }
+            //检查密码是否为空
+            function checkPassword(){
+                var password = $('#passwordInput-id').val()
+                if (password == ""){
+                    //输入框为空
+                    return false
+                }
+                return true
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="top"><span>微 聊</span><span>欢 迎 您</span></div>
+    <div class="left"><img src="http://localhost:8080/pages/img/background/registerFly.png" alt="Logo"></div>
+    <div class="right">
+        <form method="post" action="http://localhost:8080/userServlet" id="form">
+            <input type="hidden" name="action" value="login">
+            <div class="right_username">用户名：<input type="text" name="usernameInput" placeholder="请输入用户名(注册邮箱)" id="usernameInput-id"></div>
+            <div id="right_username_null"></div>
+            <div id="right_password">密码：<input type="password" name="passwordInput" placeholder="请输入密码" id="passwordInput-id"></div>
+            <div id="right_password_null"></div>
+            <div id="right_third"><input type="checkbox" class="right_free_input"><span>7天内免密码登录</span><a href="http://localhost:8080/pages/Register.jsp" class="register">注册微聊</a></div>
+            <div id="right_submit"><input type="submit" value="登录" id="right_submit_input"></div>
+            <div id="right_forget"><a href="http://localhost:8080/pages/PasswordForgeted.jsp">忘记密码?</a></div>
+        </form>
+    </div>
+</body>
+</html>

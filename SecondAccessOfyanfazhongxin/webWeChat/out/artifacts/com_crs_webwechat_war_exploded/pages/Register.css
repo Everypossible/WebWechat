@@ -1,0 +1,337 @@
+body{
+    background: #EFF8FF;
+}
+
+/*.container{*/
+/*    position: relative;*/
+/*    width: 70rem;*/
+/*}*/
+
+/*.container img{*/
+/*    width: 70rem;*/
+/*}*/
+
+.panel{
+    width: 100%;
+    margin: 1rem 0px 0;
+    position: absolute;
+
+    display: flex;
+    justify-content: center;
+}
+
+.mxl_box0_10{
+    width: 570px;
+    height: 700px;
+    background-color: #f8f6f6;
+    position: absolute;
+    margin: auto auto auto -300px;
+}
+.mxl_topbox_10{
+    width:557px;
+    height: 45px;
+    background-color:	#4F94CD;
+    position: absolute;
+    top:0px;
+    /*border-radius: 7 7 0 0;*/
+    color:white;
+    font-size: 15px;
+    padding-left: 15px;
+    line-height: 45px;
+}
+.mxl_leftbox_10{
+    width: 570px;
+    height: 765px;
+    background-color: #EFF8FF;
+    position: absolute;
+    top:45px;
+    left:0px;
+    bottom: 0px;
+    border:solid 1px 	#D4D4D4;
+}
+/*.mxl_rightbox_10{*/
+/*    width: 312px;*/
+/*    height: 655px;*/
+/*    background-color: #EEEEEE;*/
+/*    position: absolute;*/
+/*    top:45px;*/
+/*    left: 700px;*/
+/*    bottom: 0px;*/
+/*    border:solid 1px 	#D4D4D4;*/
+/*}*/
+
+/*.mxl_innerbox_10{*/
+/*    width:440px;*/
+/*    height: 35px;*/
+/*    background-color: yellow;*/
+/*    margin:50px auto auto 90px;*/
+
+
+/*}*/
+
+/*.mxl_innerbox_1 ul li{*/
+/*    list-style: none;*/
+/*    display: block;*/
+/*    width:130px;*/
+/*    height:35px;*/
+/*    font-size: 14px;*/
+/*    float:left;*/
+/*    text-align: center;*/
+/*    line-height:32px;*/
+/*    border-radius: 5px 5px 5px 5px;*/
+/*    border: solid 1px #D4D4D4;*/
+/*    background-color: #EDEDED;*/
+
+/*}*/
+
+#register_form_div{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+a{
+    text-decoration: none;
+}
+#single{
+    background-color: #0066FF
+}
+#single a{
+    color:white;
+}
+#single1 a{
+    color:black;
+}
+.mxl_innerbox1_10{
+    width: 570px;
+    height: 550px;
+    /*background-color: pink;*/
+    margin-top: 15px;
+    padding-left:0px;
+    padding-top: 15px;
+    position: relative;
+}
+.mxl_innerbox1_10 ul li{
+    list-style: none;
+    font-size: 14px;
+    position: absolute;
+}
+.mxl_innerbox1_10 ul input{
+    border: solid 2px #D4D4D4;
+    border-radius: 4px	4px	4px	4px;
+    width: 320px;
+    height: 28px;
+}
+.mxl_innerbox1_10 ul div{
+    position: absolute;
+}
+
+#username{
+    left: 50px;
+    top: 200px;
+}
+#password_text{
+    left:50px;
+    top:260px;
+
+}
+#repeat{
+    left:50px;
+    top:320px;
+}
+
+#sex{
+    left:50px;
+    top:380px;
+}
+
+#man_radio{
+    width: auto;
+    height: auto;
+}
+
+#woman_radio{
+    width: auto;
+    height: auto;
+}
+
+#birth{
+    left:50px;
+    top:440px;
+}
+#desc{
+    left:50px;
+    top:500px;
+}
+
+#check_code{
+    left:50px;
+    top:560px;
+}
+#codeInput{
+    width: 220px;
+    height: 28px;
+}
+
+#submit{
+    width:120px;
+    height: 40px;
+    /*border-radius: 5px 5px 5px 5px;*/
+    background-color:#00CC00;
+    color:white;
+    font-size: 20px;
+    position: absolute;
+    left:140px;
+    top: 700px;
+
+}
+/*提示信息*/
+#s_email{
+    width: 335px;
+    height:65px;
+    position: absolute;
+    left:120px;
+    top:232px;
+    /*background-color:pink;*/
+    /*border: solid 1px #D4D4D4;*/
+
+}
+#s_password{
+    width: 335px;
+    height:35px;
+    position: absolute;
+    left:120px;
+    top:292px;
+    /*background-color:pink;*/
+    /*border: solid 1px #D4D4D4;*/
+
+}
+#s_repassword{
+    width: 335px;
+    height:25px;
+    color:silver;
+    position: absolute;
+    left:120px;
+    top:352px;
+    /*background-color:pink;*/
+    /*border: solid 1px #D4D4D4;*/
+
+}
+#yanzheng{
+    width: 130px;
+    height: 60px;
+    position: absolute;
+    left:340px;
+    top:510px;
+    /*background-color: pink;*/
+    /*border: solid 1px #D4D4D4;*/
+}
+#textcode1{
+    width: 200px;
+    height: 30px;
+    /*margin-bottom: 0px;*/
+    font-size: 15px;
+    /*background-color: pink;*/
+    position: absolute;
+    top: 80px;
+    color:blue;
+}
+/*生成验证码部分#code*/
+#code{
+    width: 120px;
+    height: 30px;
+    /*background-color: aqua;*/
+    font-size: 18px;
+    position: absolute;
+    top: 50px;
+    /*color:aqua;*/
+}
+#last{
+    width:270px;
+    height:35px;
+    position: absolute;
+    left:100px;
+    top:590px;
+    /*background-color: pink;*/
+    /*padding-top:10px;*/
+    font-size: 15px;
+    line-height: 34px;
+    color:	#FFCC00;
+}
+/*验证码正确与错误信息提提示 last1*/
+#last1{
+    width: 280px;
+    height: 26px;
+    color:silver;
+    /*background-color: yellow;*/
+    position: absolute;
+    left:145px;
+    top:295px;
+}
+#last2{
+    width:270px;
+    height:35px;
+    position: absolute;
+    left:60px;
+    top:640px;
+    /*background-color: aqua;*/
+    font-size: 15px;
+    line-height: 34px;
+
+}
+#agreement{
+    width: auto;
+    height: auto;
+}
+/*悬浮在“看不清楚请换一张”时光标变成手的形状*/
+#textcode1:hover{cursor:pointer;}
+
+/*对小飞机图片进行设置*/
+#register_fly{
+    height: 270px;
+    width: 350px;
+    position: absolute;
+    margin-top: 480px;
+    margin-left: 1000px;
+}
+
+/*头像*/
+.con4 {
+    width: 300px;
+    height: auto;
+    overflow: hidden;
+    margin: -40px 100px auto;
+    color: #FFFFFF;
+}
+
+.con4 .btn {
+    width: 50%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: #d8b49c;
+    display: block;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.upload {
+    float: left;
+    position: relative;
+}
+
+.upload_pic {
+    display: block;
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    border-radius: 5px;
+}
+
+#cvs {
+    border: 1px solid #000;
+    margin: 20px 0 20px 50px;
+}

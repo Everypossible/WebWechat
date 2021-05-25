@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      body{padding: 0 100px;}
+
+      div ,dl, dt, dd,a{margin: 0;padding: 0;}
+
+      .clearfix{overflow: hidden;zoom: 1;}
+      .clearfix:after{content: "";display: block;clear: both;width: 100%;height: 0;}
+
+      .filter-box{border: 1px solid #ddd;padding: 0 20px;line-height: 30px;/*overflow: hidden;*/}
+      .filter-box dl dt{float: left;width: 60px;}
+      .filter-box dl dd{float: left;width: 1000px;}
+      .filter-box dl dd a{text-decoration: none;color: #222;font-size: 14px;display: inline-block;width: 145px;}
+
+      .load-more{background: url("../pages/img/icon/add.png") no-repeat;display:inline-block; width: 50px;height: 16px;position: absolute;right: 15px;top: 5px;}
+      .load-more:hover{background-position: 0 -65px;}
+
+      .load-more.active{background-position: 0 -16px;}
+      .load-more.active:hover{background-position:0 -82px;}
+
+      .filter-box dl{height: 26px;overflow: hidden;position: relative;}
+    </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function(){
+
+      var preResult = $('.filter-box dd').height();
+      var pre = $('.filter-box dl').height();
+
+      $(".load-more").click(function(){
+        if(!$(this).hasClass('active')){
+          $(this).parent().parent().animate({
+            height:preResult
+          });
+          $(this).addClass('active');
+        } else {
+          $(this).parent().parent().animate({
+            height:pre
+          });
+          $(this).removeClass('active');
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+<div class="filter-box ">
+  <dl class="clearfix">
+    <dt>分类</dt>
+    <dd>
+      <a href="#">原版</a>
+      <a href="#">签名版</a>
+      <a href="#">内地引进版</a>
+      <a href="#">演唱会DVD/LIVE</a>
+      <a href="#">限量版</a></li>
+      <a href="#">贴纸/文件夹/笔记本</a>
+      <a href="#">MBK Entertainment</a>
+      <a href="#">环球唱片</a>
+      <a href="#">艺人工作室</a>
+      <a href="#">英皇娱乐</a>
+      <a href="#">Fantagio</a>
+      <a href="#">乐华娱乐</a>
+      <a href="#">Woolim</a>
+      <a href="#">WM Entertainment</a>
+      <a href="#">相信音乐</a>
+      <a href="#">TS Entertainment</a>
+      <a href="#">环球中国</a>
+      <a href="#">华纳唱片</a>
+      <a href="#">天娱传媒</a>
+      <a href="#">LOEN Entertainment</a>
+      <a href="#">原版</a>
+      <a href="#">签名版</a>
+      <a href="#">内地引进版</a>
+      <a href="#">演唱会DVD/LIVE</a>
+      <a href="#">限量版</a></li>
+      <a href="#">贴纸/文件夹/笔记本</a>
+      <a href="#">MBK Entertainment</a>
+      <a href="#">环球唱片</a>
+      <a href="#">艺人工作室</a>
+      <a href="#">英皇娱乐</a>
+      <a href="#">Fantagio</a>
+      <a href="#">乐华娱乐</a>
+      <a href="#">Woolim</a>
+      <a href="#">WM Entertainment</a>
+      <a href="#">相信音乐</a>
+      <a href="#">TS Entertainment</a>
+      <a href="#">环球中国</a>
+      <a href="#">华纳唱片</a>
+      <a href="#">天娱传媒</a>
+      <a href="#">LOEN Entertainment</a>
+      <span class="load-more"></span>
+    </dd>
+  </dl>
+</div>
+</body>
+</html>
+

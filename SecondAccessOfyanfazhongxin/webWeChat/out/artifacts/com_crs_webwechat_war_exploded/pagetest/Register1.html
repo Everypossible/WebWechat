@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sunny仿网易邮箱设计</title>
+
+    <style>
+        .mxl_box0_10{
+            width: 1000px;
+            height: 700px;
+            /*background-color: yellow;*/
+            position: relative;
+            margin:40px auto  auto 25%;
+
+        }
+        .mxl_topbox_10{
+            width:1000px;
+            height: 45px;
+            background-color:	#4F94CD;
+            position: absolute;
+            top:0px;
+            border-radius: 7px 7px 0  0;
+            color:white;
+            font-size: 15px;
+            padding-left: 15px;
+            line-height: 45px;
+        }
+        .mxl_leftbox_10{
+            width: 700px;
+            height: 655px;
+            /*background-color: pink;*/
+            position: absolute;
+            top:45px;
+            left:0px;
+            bottom: 0px;
+            border:solid 1px 	#D4D4D4;
+        }
+        .mxl_rightbox_10{
+            width: 312px;
+            height: 655px;
+            background-color: #EEEEEE;
+            position: absolute;
+            top:45px;
+            left: 700px;
+            bottom: 0px;
+            border:solid 1px 	#D4D4D4;
+        }
+        .mxl_innerbox_10{
+            width:440px;
+            height: 35px;
+            /*background-color: yellow;*/
+            margin:50px auto auto 90px;
+
+
+        }
+        .mxl_innerbox_10 ul li{
+            list-style: none;
+            display: block;
+            width:130px;
+            height:35px;
+            font-size: 14px;
+            float:left;
+            text-align: center;
+            line-height:32px;
+            border-radius: 5px 5px 5px 5px;
+            border: solid 1px #D4D4D4;
+            background-color: #EDEDED;
+
+        }
+
+        a{
+            text-decoration: none;
+
+        }
+        #single{
+            background-color: #0066FF
+        }
+        #single a{
+            color:white;
+        }
+        #single1 a{
+            color:black;
+        }
+        .mxl_innerbox1_10{
+            width: 700px;
+            height: 550px;
+            /*background-color: pink;*/
+            margin-top: 15px;
+            padding-left:0px;
+            padding-top: 15px;
+            position: relative;
+
+        }
+        .mxl_innerbox1_10 ul li{
+            list-style: none;
+            font-size: 20px;
+
+        }
+        .mxl_innerbox1_10 ul input{
+            border: solid 2px #D4D4D4;
+            border-radius: 4px	4px	4px	4px	;
+        }
+
+        #one{
+            position: absolute;
+            left:50px;
+
+        }
+        #two{
+            position: absolute;
+            left:90px;
+            top:150px;
+
+        }
+        #three{
+            position: absolute;
+            left:50px;
+            top:230px;
+        }
+        #four{
+            position: absolute;
+            left:68px;
+            top:330px;
+        }
+
+        #submit{
+            width:120px;
+            height: 40px;
+            /*border-radius: 5px 5px 5px 5px;*/
+            background-color:#00CC00;
+            color:white;
+            font-size: 20px;
+            position: absolute;
+            left:140px;
+            bottom:60px;
+
+        }
+        /*提示信息*/
+        #s_email{
+            width: 335px;
+            height:65px;
+            position: absolute;
+            left:145px;
+            top:80px;
+            /*background-color:pink;*/
+            /*border: solid 1px #D4D4D4;*/
+
+        }
+        #s_password{
+            width: 335px;
+            height:35px;
+            position: absolute;
+            left:145px;
+            top:190px;
+            /*background-color:pink;*/
+            /*border: solid 1px #D4D4D4;*/
+
+        }
+        #s_repassword{
+            width: 335px;
+            height:25px;
+            color:silver;
+            position: absolute;
+            left:145px;
+            top:270px;
+            /*background-color:pink;*/
+            /*border: solid 1px #D4D4D4;*/
+
+        }
+        #yanzheng{
+            width: 130px;
+            height: 90px;
+            position: absolute;
+            left:415px;
+            top:320px;
+            /*background-color: pink;*/
+            /*border: solid 1px #D4D4D4;*/
+
+
+        }
+        #textcode1{
+            width: 200px;
+            height: 30px;
+            /*margin-bottom: 0px;*/
+            font-size: 15px;
+            /*background-color: pink;*/
+            position: absolute;
+            top:60px;
+            color:blue;
+
+        }
+        /*生成验证码部分#code*/
+        #code{
+            width: 130px;
+            height: 50px;
+            /*background-color: aqua;*/
+            font-size: 18px;
+            /*color:aqua;*/
+
+
+        }
+        #last{
+            width:270px;
+            height:35px;
+            position: absolute;
+            left:145px;
+            top:370px;
+            /*background-color: pink;*/
+            /*padding-top:10px;*/
+            font-size: 15px;
+            line-height: 34px;
+            color:	#FFCC00;
+
+        }
+        /*验证码正确与错误信息提提示 last1*/
+        #last1{
+            width: 280px;
+            height: 26px;
+            color:silver;
+            /*background-color: yellow;*/
+            position: absolute;
+            left:145px;
+            top:295px;
+        }
+        #last2{
+            width:270px;
+            height:35px;
+            position: absolute;
+            left:145px;
+            top:415px;
+            /*background-color: aqua;*/
+            font-size: 15px;
+            line-height: 34px;
+
+        }
+        /*悬浮在“看不清楚请换一张”时光标变成手的形状*/
+        #textcode1:hover{cursor:pointer;}
+    </style>
+
+</head>
+<body>
+<div class="mxl_box0_10">
+    <div class="mxl_topbox_10">欢迎注册无限容量的网易邮箱！邮件地址可以登陆使用其他网易旗下产品</div>4
+    <div class="mxl_leftbox_10">
+        <div class="mxl_innerbox_10">
+            <ul>
+                <li id="single"><a href="">注册字母邮箱</a></li>
+                <li id="single1"><a href="">注册手机号码邮箱</a></li>
+                <li id="single1"><a href="">注册vip邮箱</a></li>
+            </ul>
+        </div>
+
+        <div class="mxl_innerbox1_10">
+
+            <form action="#" method="post" id="form">
+                <ul id="ul0">
+                    <li id="one" ><span style="color: red ;">*</span>邮箱地址 <input type="email" style="height: 30px;width: 260px"  id="Email">@
+                        <select style="height: 35px;">
+                            <option value="" >163.com</option>
+                            <option value="">qq.com</option>
+                        </select>
+                    </li><br>
+                    <div id="s_email" ></div>
+                    <li id="two"><span style="color: red ;">*</span>密码 <input type="password" style="height: 30px;width: 400px"  id="password"></li>
+                    <div id="s_password"></div>
+                    <li id="three"><span style="color: red ;">*</span>确认密码 <input type="password" style="height: 30px;width: 400px" id="repassword"></li>
+                    <div id="s_repassword"></div>
+
+                    <!-- 验证码部分 -->
+                    <li id="four"><span style="color: red ;">*</span>验证码 <input type="text" style="height: 30px;width: 260px" id="input"> </li>
+
+                    <div id="yanzheng">
+                        <input type = "button" class="button" id="code" />
+                        <div id="textcode1"  οnclick="createCode()"><a herf="#">看不清楚 ?换张图片</a></div>
+                    </div>
+                    <div id="last">
+                        填写图片中的字符, 不区分大小写
+                    </div>
+                    <!-- 验证码正确与错误信息提提示 -->
+                    <div id ="last1">
+
+                    </div>
+                    <div id ="last2">
+                        <input type="checkbox">同意<a href="">"服务条款"</a>	和<a href="">"隐私相关政策"</a>
+                    </div>
+                </ul>
+                <input type="submit" value="立即注册" id="submit" >
+            </form>
+
+        </div>
+
+    </div>
+    <div class="mxl_rightbox_10"><img src="images/9.jpg" alt="" width="312px" height="655px"></div>
+</div>
+</body>
+</html>
+<script>
+    window.onload =function(){
+        //给表单绑定onsubmit事件
+        document.getElementById("form").onsubmit = function () {
+            checkEmail()&& checkPassword()&& checkRePassword()&&validate()&&createCode();
+        }
+        //给邮箱、密码绑定离焦事件
+        document.getElementById("Email").onblur = checkEmail;
+        document.getElementById("password").onblur = checkPassword;
+        document.getElementById("repassword").onblur = checkRePassword;
+        document.getElementById("input").onblur = validate;
+
+    }
+    // innerHTML在JS是双向功能：获取对象的内容 或 向对象插入内容
+    // 如<div id="aa">这是内容</div>
+    // document.getElementById(‘aa’).innerHTML 来获取id为aa的对象的内嵌内容
+    // document.getElementById(‘abc’).innerHTML=’这是被插入的内容’;
+    // innerHTML 和outerHTML的区别：
+    // （1）innerHTML:
+    // 　　从对象的起始位置到终止位置的全部内容,不包括Html标签。
+    // （2）outerHTML:
+    // 　　除了包含innerHTML的全部内容外, 还包含对象标签本身。
+
+
+    //校验Email
+    function checkEmail(){
+        //1.获取Email的值
+        var email = document.getElementById("Email").value;
+        //2.定义正则表达式
+        var reg_email =   /^[a-zA-Z0-9]{6,18}/;
+        //3.判断值是否符合正则的规则
+        var judge = reg_email.test(email);
+        //4.提示信息
+        var s_email = document.getElementById("s_email");
+
+        if(judge){
+            //提示正确信息
+            s_email.innerHTML = "<b>输入合法</b>";
+            // 或者换成alert("输入合法")
+        }else{
+            //提示错误信息
+            //innerHTML要是放图片后面双引号里不能再次出现双引号，否则图片还是显示不出来这里放的是文字提示
+            // s_email.innerHTML = "<img  src='images/2.jpg'>";
+            s_email.innerHTML = "<font color='red'><b>!!!长度应为6~18个字符</b></font>";
+
+            //或者换成 alert("输入不合法")
+        }
+        return judge;
+    }
+
+
+    //校验密码
+    function checkPassword(){
+        //1.获取密码的值
+        var password = document.getElementById("password").value;
+        //2.定义正则表达式
+        var reg_password = /^[a-zA-Z0-9]{6,16}$/;
+        //3.判断值是否符合正则的规则
+        var judge = reg_password.test(password);
+        //4.提示信息
+        var s_password = document.getElementById("s_password");
+
+        if(judge){
+            //提示正确信息
+            s_password.innerHTML = "<b>输入合法</b>";
+        }else{
+            //提示错误信息这里可以放图片是图片 也可以放文字
+            // s_password.innerHTML = "<img src='images4/7.jpg'>";
+            s_password.innerHTML = "<font color='red'><b>!!!密码长度应为6~16个字符</b></font>";
+        }
+        return judge;
+    }
+
+    //校验确认密码
+    function checkRePassword(){
+        //1.获取密码的值
+
+        var password = document.getElementById("password").value;
+        var repassword = document.getElementById("repassword").value;
+        //4.提示信息
+        var s_repassword = document.getElementById("s_repassword");
+
+
+        if(password == repassword){
+            //提示正确信息
+            s_repassword.innerHTML = "<b>与原密码一致输入合法</b>";
+        }
+        else   {
+            //提示错误信息
+            s_repassword.innerHTML = "<font color='silver'>请再次填写密码</font>";
+        }
+
+    }
+
+    //设置全局的变量code保存验证码
+    var code;
+    function createCode(){
+        //首先默认code为空字符串
+        code = '';
+        //设置长度为4
+        var codeLength = 5;
+        var codeV = document.getElementById('code');
+        //设置随机字符
+        var random = new Array(0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R', 'S','T','U','V','W','X','Y','Z');
+        //循环5次
+        for(var i = 0; i < codeLength; i++){
+            //设置随机数范围0 ~ 36
+            var index = Math.floor(Math.random()*36);
+            code += random[index];
+        }
+        codeV.value = code;
+    }
+
+    //判断输入的值是否与验证码等值
+    function validate(){
+        var oValue = document.getElementById('input').value.toUpperCase();
+        if(oValue ==0){
+            last1.innerHTML ="请输入验证码";
+        }else if(oValue != code){
+            last1.innerHTML="验证码不正确，请重新输入";
+            oValue = ' ';
+            createCode();
+        }else{
+            last1.innerHTML ="密码正确";
+        }
+    }
+</script>

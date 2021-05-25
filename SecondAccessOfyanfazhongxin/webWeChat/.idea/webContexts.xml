@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebContextManager">
+    <option name="state">
+      <map>
+        <entry key="file://$PROJECT_DIR$/web/WEB-INF/Login.html" value="file://$PROJECT_DIR$/web/WEB-INF" />
+        <entry key="file://$PROJECT_DIR$/web/pages/CreateRoom.html" value="file://$PROJECT_DIR$/web/pages" />
+        <entry key="file://$PROJECT_DIR$/web/pages/CreateRoom.jsp" value="file://$PROJECT_DIR$/web/pages" />
+        <entry key="file://$PROJECT_DIR$/web/pages/FriendsList.html" value="file://$PROJECT_DIR$/web/pages" />
+        <entry key="file://$PROJECT_DIR$/web/pages/Home.html" value="file://$PROJECT_DIR$/web/pages" />
+        <entry key="file://$PROJECT_DIR$/web/pages/HomeTest.html" value="file://$PROJECT_DIR$/web/pages" />
+        <entry key="file://$PROJECT_DIR$/web/pages/HomeTest.jsp" value="file://$PROJECT_DIR$/web/pages" />
+        <entry key="file://$PROJECT_DIR$/web/pages/Login.html" value="file://$PROJECT_DIR$/web/pages" />
+        <entry key="file://$PROJECT_DIR$/web/pages/PersonPage.html" value="file://$PROJECT_DIR$/web/pages" />
+        <entry key="file://$PROJECT_DIR$/web/pages/Register.html" value="file://$PROJECT_DIR$/web/pages" />
+        <entry key="file://$PROJECT_DIR$/web/pages/Register1.html" value="file://$PROJECT_DIR$/web/pages" />
+        <entry key="file://$PROJECT_DIR$/web/pages/Registertwo.html" value="file://$PROJECT_DIR$/web/pages" />
+        <entry key="file://$PROJECT_DIR$/web/pages/websocket-server/TalkTest.html" value="file://$PROJECT_DIR$/web/pages/websocket-server" />
+        <entry key="file://$PROJECT_DIR$/web/pagetest/add_unfold.html" value="file://$PROJECT_DIR$/web/pagetest" />
+        <entry key="file://$PROJECT_DIR$/web/pagetest/my_add_unfold.html" value="file://$PROJECT_DIR$/web/pagetest" />
+      </map>
+    </option>
+  </component>
+</project>
