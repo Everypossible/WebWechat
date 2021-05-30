@@ -695,19 +695,19 @@
                             <canvas id="cvs_head_portrait" width="100" height="100"></canvas>
                             <span class="btn upload">选择头像<input type="file" class="con1_upload-input" id="upload-input"></span>
                         </li><br>
-                        <li id="li_username"><span style="color: red;">*</span>用户昵称<input type="text" name="input_nickname" id="nickname-id"></li>
+                        <li id="li_username"><span style="color: red;">*</span>用户昵称<input type="text" name="nickname" id="nickname-id"></li>
                             <div id="sUsername"></div>
-                        <li id="li_email"><span style="color: red;">*</span>用户邮箱<input type="text" name="input_username" id="email-id"></li>
+                        <li id="li_email"><span style="color: red;">*</span>用户邮箱<input type="text" name="username" id="email-id"></li>
                             <div id="sEmail"></div>
                         <li id="li_code"><span style="color: red;">*</span>验证码<input type="text" name="input_code" id="li_code-codeInput"><button class="code_button" type="button">发送验证码</button></li>
                             <div id="sCode"></div>
-                        <li id="li_password"><span style="color: red;">*</span>用户密码<input type="password" name="input_password" id="password-id"></li>
+                        <li id="li_password"><span style="color: red;">*</span>用户密码<input type="password" name="password" id="password-id"></li>
                             <div id="sPassword"></div>
                         <li id="li_repeat_password"><span style="color: red;">*</span>确认密码<input type="password" name="input_repeat_password" id="repeat-id">
                         </li>
                             <div id="sRepeatPassword"></div>
-                        <li id="li_sex"><span style="color: red;">*</span>我的性别<input type="radio" name="input_sex" id="radio_man" checked>男<input
-                                type="radio" name="input_sex" id="radio_woman">女
+                        <li id="li_sex"><span style="color: red;">*</span>我的性别<input type="radio" name="sex" id="radio_man" checked>男<input
+                                type="radio" name="sex" id="radio_woman">女
                         </li>
                             <div id="sSex"></div>
                         <li id="li_birth"><span style="color: red;">*</span>我的生日
@@ -726,9 +726,9 @@
                             <font>日</font>
                         </li>
                             <div id="sBirth"></div>
-                        <li id="li_addr"><span style="color: red;">*</span>所在地区<input type="text" name="input_addr" id="addr-id"></li>
+                        <li id="li_addr"><span style="color: red;">*</span>所在地区<input type="text" name="userAddr" id="addr-id"></li>
                             <div id="sAddr"></div>
-                        <li id="li_desc"><span style="color: red;">*</span>个性签名<input type="text" name="input_desc" id="desc-id"></li>
+                        <li id="li_desc"><span style="color: red;">*</span>个性签名<input type="text" name="userDesc" id="desc-id"></li>
                             <div id="sDesc"></div>
                         <div id ="last">
                             <input type="checkbox" id="agreement">同意<a href="">"服务条款"</a>	和<a href="">"隐私相关政策"</a>

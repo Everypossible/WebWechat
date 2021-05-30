@@ -37,4 +37,11 @@ public interface MessageService {
      * @return
      */
     public List queryFullMsgByUserNickname(String userNickname);
+
+    /**
+     *查询聊天记录(根据群昵称)
+     * @param roomNickname
+     * @return
+     */
+    public List queryMsgByRoomNickname(String roomNickname);
 }

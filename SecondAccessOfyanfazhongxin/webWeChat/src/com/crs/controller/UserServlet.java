@@ -7,6 +7,7 @@ import com.crs.service.UserDetailsService;
 import com.crs.service.UserService;
 import com.crs.service.impl.UserDetailsServiceImpl;
 import com.crs.service.impl.UserServiceImpl;
+import com.crs.utils.BeanUtils;
 import com.crs.utils.MD5Utils;
 import com.google.gson.Gson;
 import org.apache.commons.mail.EmailException;
@@ -16,10 +17,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Map;
+
 /**
  * @Description: 合并RegisterServlet和LoginServlet
  * @author RS
@@ -35,11 +39,10 @@ public class UserServlet extends BaseServlet {
      * @throws ServletException
      * @throws IOException
      */
-    protected void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        String username = req.getParameter("usernameInput");
-        String password = req.getParameter("passwordInput");
-
-        User loginUser = userService.login(new User(null, username, MD5Utils.toMD5(password), 0));
+    protected void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchMethodException {
+        User user = (User) BeanUtils.populate(User.class, req.getParameterMap());
+        user.setPassword(MD5Utils.toMD5(req.getParameter("password")));
+        User loginUser = userService.login(user);
         //如果等于null,登录失败
         if(loginUser == null){
             //跳回登录页面
@@ -51,9 +54,9 @@ public class UserServlet extends BaseServlet {
             String userNickname = userDetailsService.queryUserDetailsByUserId(userId).getNickname();
             req.getSession().setAttribute("user", loginUser);
             req.getSession().setAttribute("userNickname", userNickname);
-            LoginDetails.loginerId = userService.queryUserIdByUsername(username);
+            LoginDetails.loginerId = userService.queryUserIdByUsername(loginUser.getUsername());
             //跳转到主页
-            resp.sendRedirect("/pages/HomeTest.jsp");
+            resp.sendRedirect("/pages/admin/HomeTest.jsp");
         }
     }
 
@@ -64,17 +67,14 @@ public class UserServlet extends BaseServlet {
      * @throws ServletException
      * @throws IOException
      */
-    protected void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    protected void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchMethodException {
         //获取请求参数
-        String username = req.getParameter("input_username");
-        String nickname = req.getParameter("input_nickname");
-        String password = req.getParameter("input_password");
-        String sex = req.getParameter("input_sex");
+        User user = BeanUtils.populate(User.class, req.getParameterMap());
+        UserDetails userDetails = BeanUtils.populate(UserDetails.class, req.getParameterMap());
+
         String year = req.getParameter("YYYY");
         String month = req.getParameter("MM");
         String day = req.getParameter("DD");
-        String addr = req.getParameter("input_addr");
-        String desc = req.getParameter("input_desc");
         String code = req.getParameter("input_code");
         Integer userId = null;
         String dateStr = year + "-" + month + "-" + day;
@@ -84,6 +84,14 @@ public class UserServlet extends BaseServlet {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        user.setPassword(MD5Utils.toMD5(req.getParameter("password")));
+        user.setIdentity(0);
+
+        userDetails.setBirth(birth);
+        userDetails.setCreateTime(LocalDateTime.now());
+
+        String username = user.getUsername();
+        String nickname = userDetails.getNickname();
 
         //equalsIgnoreCase()可以忽略大小写去进行比较字符串
         if (codeIsCorrect(req, resp)){
@@ -101,10 +109,10 @@ public class UserServlet extends BaseServlet {
                 req.getRequestDispatcher("/pages/Register.jsp").forward(req, resp);
             } else {
                 //用户名不存在,该用户名可用
-                userService.userRegister(new User(null, username, MD5Utils.toMD5(password), 0));
+                userService.userRegister(user);
                 LoginDetails.loginerId = userService.queryUserIdByUsername(username);
-                userDetailsService.userDetailsRegister(new UserDetails(null, null, nickname, sex, birth,
-                        addr, desc, LocalDateTime.now(), LoginDetails.loginerId));
+                userDetails.setUserId(LoginDetails.loginerId);
+                userDetailsService.userDetailsRegister(userDetails);
                 //跳转到注册成功页面
                 resp.sendRedirect("/pages/Login.html");
             }

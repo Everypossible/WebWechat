@@ -29,4 +29,11 @@ public interface MessageDao {
      * @return
      */
     public List queryMessageByUserNickname(String userNickname);
+
+    /**
+     * 根据群昵陈查询聊天记录
+     * @param roomNickname
+     * @return 放回聊天记录(List(Message))
+     */
+    public List queryMsgByRoomNickname(String roomNickname);
 }

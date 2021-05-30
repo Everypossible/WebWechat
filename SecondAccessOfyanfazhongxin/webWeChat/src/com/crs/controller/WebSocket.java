@@ -1,5 +1,10 @@
 package com.crs.controller;
 import com.crs.entity.Message;
+import com.crs.entity.UserAndRoom;
+import com.crs.service.RoomService;
+import com.crs.service.UserAndRoomService;
+import com.crs.service.impl.RoomServiceImpl;
+import com.crs.service.impl.UserAndRoomServiceImpl;
 import com.crs.utils.WebUtils;
 import com.crs.utils.WebsocketUtils;
 import com.google.gson.Gson;
@@ -37,11 +42,20 @@ import java.util.concurrent.CopyOnWriteArraySet;
  */
 @ServerEndpoint("/websocket/chat/{userNickname}")
 public class  WebSocket {
-    // 当每一个连接来的时候都会实例化一个MsgWebSocket
+
+    /**
+     * 当每一个连接来的时候都会实例化一个MsgWebSocket
+     */
     private static ConcurrentHashMap<WebSocket, String> webSockets = new ConcurrentHashMap<WebSocket, String>();
-    //真正的在线接受者
+
+    /**
+     * 真正的在线接受者
+     */
     private static ConcurrentHashMap<String, WebSocket> realReceivers = new ConcurrentHashMap<>();
-    // 与任何一个客户端的连接都有会话
+    private static List<String> receiverList = new ArrayList<>();
+    private static List<String> roomMemberList = new ArrayList<>();
+    private static UserAndRoomService userAndRoomService = new UserAndRoomServiceImpl();
+    private static RoomService roomService = new RoomServiceImpl();
     private Session session;
     private Message message = null;
     private String msgSender;
@@ -56,21 +70,21 @@ public class  WebSocket {
         webSockets.put(this, userNickname);
         System.out.println("***有新用户上线***");
         msgSender = userNickname;
-        this.message = new Message(null, String.valueOf(this.session.getId()), null,
-                "用户" + this.session.getId() + "： 进入了聊天室",
-                LocalDateTime.ofInstant(new Date().toInstant(), ZoneId.systemDefault()), 0);
-        Gson gson = new Gson();
+//        this.message = new Message(null, String.valueOf(this.session.getId()), null,
+//                "用户" + this.session.getId() + "： 进入了聊天室",
+//                LocalDateTime.ofInstant(new Date().toInstant(), ZoneId.systemDefault()), 0);
+//        Gson gson = new Gson();
 //        sendMsgToOthers(gson.toJson(this.message));
     }
     @OnClose
     public void onClose(Session session) {
         this.session = session;
         webSockets.remove(this);
-        this.message = new Message(null, String.valueOf(this.session.getId()), null,
-                "用户" + this.session.getId() + "： 离开了聊天室",
-                LocalDateTime.ofInstant(new Date().toInstant(), ZoneId.systemDefault()), 0);
-        System.out.println(this.message);
-        Gson gson = new Gson();
+//        this.message = new Message(null, String.valueOf(this.session.getId()), null,
+//                "用户" + this.session.getId() + "： 离开了聊天室",
+//                LocalDateTime.ofInstant(new Date().toInstant(), ZoneId.systemDefault()), 0);
+//        System.out.println(this.message);
+//        Gson gson = new Gson();
 //        sendMsgToOthers(gson.toJson(this.message));
     }
 
@@ -90,17 +104,26 @@ public class  WebSocket {
         }
     }
 
-    /*
+    /**
      * 当服务器接收到消息的时候，做消息转发
+     * @param message
      */
     @OnMessage(maxMessageSize = 20000000)
     public void onMessage(String message) {
+        receiverList.clear();
         realReceivers.clear();
         Gson gson = new Gson();
         Message message1 = gson.fromJson(message, Message.class);
-        //从前端获得的群成员List
-        List<String> receiverList = message1.getMsgReceiverList();
-//        System.out.println("后台确认转发到：" + receiverList);
+        receiverList.add(0, message1.getMsgSender());
+        if (roomService.isExistRoom(message1.getRoomNickname()) == 1) {
+            //是群发
+            roomMemberList = userAndRoomService.queryRoomMemberByRoomName(message1.getRoomNickname());
+            for (int i = 0; i < roomMemberList.size(); i++) {
+                receiverList.add(++i, roomMemberList.get(i));
+            }
+        } else {
+            receiverList.add(1, message1.getMsgReceiver());
+        }
         //找出群成员的昵称与在线成员的昵称匹配，匹配成功则存入代发送的真正成员列表
         for (String receiver : receiverList){
             for (WebSocket key : webSockets.keySet()){
@@ -109,11 +132,9 @@ public class  WebSocket {
                 }
             }
         }
-        System.out.println("真正接收者：" + realReceivers);
 
-//        System.out.println("来自客户端的语句消息：" + message);
         // 当有消息来临时，给除去自己外的所有人发送消息
-        this.message = new Message(null, msgSender, null, message1.getMsgInfo(),
+        this.message = new Message(null, msgSender, null, null, message1.getMsgInfo(),
                 LocalDateTime.ofInstant(new Date().toInstant(), ZoneId.systemDefault()), 0);
         sendMsgToOthers(gson.toJson(this.message));
     }

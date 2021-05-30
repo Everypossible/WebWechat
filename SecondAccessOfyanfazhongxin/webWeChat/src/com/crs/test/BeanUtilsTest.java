@@ -15,6 +15,11 @@ import static org.junit.Assert.*;
  * @create 2021-04-28 18:49
  */
 public class BeanUtilsTest {
+    public String[] objToStringArray(Object obj){
+        String[] strArray = new String[1];
+        strArray[0] = "" + obj + "";
+        return strArray;
+    }
 
     @Test
     public void populate() {
@@ -25,11 +30,11 @@ public class BeanUtilsTest {
         user.setUsername("13134");
         user.setPassword("1231314");
 
-        HashMap<String, Object> map = new HashMap<String, Object>();
-        map.put("id", user.getId());
-        map.put("identity", user.getIdentity());
-        map.put("username", user.getUsername());
-        map.put("password", user.getPassword());
+        HashMap<String, String[]> map = new HashMap<String, String[]>();
+        map.put("id", objToStringArray(user.getId()));
+        map.put("identity", objToStringArray(user.getIdentity()));
+        map.put("username", objToStringArray(user.getUsername()));
+        map.put("password", objToStringArray(user.getUsername()));
 
         try {
             User user1 = BeanUtils.populate(User.class, map);

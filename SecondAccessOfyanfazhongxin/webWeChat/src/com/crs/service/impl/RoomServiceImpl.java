@@ -16,5 +16,14 @@ public class RoomServiceImpl implements com.crs.service.RoomService {
     public int createRoom(Room room) {
         return roomDao.createRoom(room);
     }
+
+    @Override
+    public int isExistRoom(String roomNickname) {
+        if (roomDao.queryRoomByRoomNickname(roomNickname) == null){
+            return 0;
+        } else {
+            return 1;
+        }
+    }
 }
 

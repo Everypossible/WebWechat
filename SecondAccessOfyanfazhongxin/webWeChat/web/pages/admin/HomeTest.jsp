@@ -95,7 +95,7 @@
 
         .main .top .top-left .search .icon-sear {
 
-            background-image: url("img/icon/search.png");
+            background-image: url("../../pages/img/icon/search.png");
             background-size: 100% 100%;
             height: 28px;
             width: 28px;
@@ -126,17 +126,17 @@
         }
 
         .main .top .top-type .friend {
-            background-image: url("img/icon/friend.png");
+            background-image: url("../../pages/img/icon/friend.png");
 
         }
 
         .main .top .top-type .file {
-            background-image: url("img/icon/room.png");
+            background-image: url("../../pages/img/icon/room.png");
 
         }
 
         .main .top .top-type .add {
-            background-image: url("img/icon/add.png");
+            background-image: url("../../pages/img/icon/add.png");
 
         }
 
@@ -158,22 +158,22 @@
             margin-left: 48px;
         }
 
-        .main .top .top-right .ic-menu {
+        /*.main .top .top-right .ic-menu {*/
 
-            background-image: url("img/icon/menu.png");
-        }
+        /*    background-image: url("../../pages/img/icon/menu.png");*/
+        /*}*/
 
-        .main .top .top-right .ic-shrink {
-            background-image: url("img/icon/shrink.png");
-        }
+        /*.main .top .top-right .ic-shrink {*/
+        /*    background-image: url("../../pages/img/icon/shrink.png");*/
+        /*}*/
 
-        .main .top .top-right .ic-boost {
-            background-image: url("img/icon/boost.png");
-        }
+        /*.main .top .top-right .ic-boost {*/
+        /*    background-image: url("../../pages/img/icon/boost.png");*/
+        /*}*/
 
-        .main .top .top-right .ic-close {
-            background-image: url("img/icon/close.png");
-        }
+        /*.main .top .top-right .ic-close {*/
+        /*    background-image: url("../../pages/img/icon/close.png");*/
+        /*}*/
 
         .main .box {
             width: 100%;
@@ -536,7 +536,7 @@
                 //获取双击处的好友昵称
                 friendNickname = $(this).find(".title").text()
                 $("#nav-top-p").text(friendNickname);
-                alert(friendNickname)
+                // alert(friendNickname)
                 //从数据库读取数据初始化该好友的聊天记录
                 $.ajax({
                     url: "http://localhost:8080/MessageServlet",
@@ -595,15 +595,13 @@
             var sendButton = document.getElementById("send-button");
             var socket = new WebSocket('ws://localhost:8080/websocket/chat/' + "${sessionScope.userNickname}");
 
-            var msg = {}
-            msg.msgSender = "${sessionScope.user.username}"
-            // msg.msgSender = "测试群发发送者"
-            msg.msgReceiver =  $("#nav-top-p").text()
-
             // 将消息内容发送到后台以存入数据库的函数
             function sendMsgByAjax(message){
+                var msg = {}
+                msg.msgSender = "${sessionScope.user.username}"
+                // msg.msgSender = "测试群发发送者"
+                msg.msgReceiver =  $("#nav-top-p").text()
                 msg.msgInfo = message
-                msg.action = "msgSendToMySQL"
                 $.ajax({
                     url: "http://localhost:8080/MessageServlet",
                     type: 'post',
@@ -632,42 +630,45 @@
                     var msg2 = {}
                     //获取消息内容
                     msg2.msgInfo = makeupStr
-                    //获取群成员的昵称
-                    var membersList = new Array()
-                    $.ajax({
-                        url: "http://localhost:8080/RoomServlet",
-                        type: 'post',
-                        async: false,
-                        //这里的friendNickname是上方定义的全局变量，表示双击时获取到的好友(个人或群)的昵称
-                        data: {"roomName":friendNickname, "action":"queryRoomMemberByRoomName"},
-                        // data: {"roomName":"动态元素", "action":"queryRoomMemberByRoomName"},
-                        success: function (dataBack){
-                            //加双引号保证昵称是字符串，避免昵称是数字时因var的弱类型而识别为数字
-                            membersList[0] = "${sessionScope.userNickname}"
-                            var dataBackToList = JSON.parse(dataBack)
-                            if (Array.prototype.isPrototypeOf(dataBackToList) && dataBackToList.length == 0){
-                                //聊天对象是个人
-                                membersList[1] = friendNickname
-                                console.log("聊天对象是个人，他是：" + membersList)
-                            } else {
-                                //聊天对象是群
-                                console.log("聊天对象是群：群成员是：" + dataBackToList)
-                                for (var i = 1; i <= dataBackToList.length; i++){
-                                    membersList[i] = dataBackToList[i-1]
-                                }
-                            }
-                        },
-                        error: function(XMLHttpRequest, textStatus, errorThrown) {
-                            console.log(XMLHttpRequest.status);
-                            console.log(XMLHttpRequest.readyState);
-                            console.log(textStatus);
-                            console.log(errorThrown);
-                        }
-                    })
-                    msg2.msgReceiverList = membersList
+                    msg2.roomNickname = $("#nav-top-p").text()
+                    msg2.msgSender = "${sessionScope.userNickname}"
+                    msg2.msgReceiver = $("#nav-top-p").text()
+                    <%--//获取群成员的昵称--%>
+                    <%--var membersList = new Array()--%>
+                    <%--$.ajax({--%>
+                    <%--    url: "http://localhost:8080/RoomServlet",--%>
+                    <%--    type: 'post',--%>
+                    <%--    async: false,--%>
+                    <%--    //这里的friendNickname是上方定义的全局变量，表示双击时获取到的好友(个人或群)的昵称--%>
+                    <%--    data: {"roomName":friendNickname, "action":"queryRoomMemberByRoomName"},--%>
+                    <%--    // data: {"roomName":"动态元素", "action":"queryRoomMemberByRoomName"},--%>
+                    <%--    success: function (dataBack){--%>
+                    <%--        //加双引号保证昵称是字符串，避免昵称是数字时因var的弱类型而识别为数字--%>
+                    <%--        membersList[0] = "${sessionScope.userNickname}"--%>
+                    <%--        var dataBackToList = JSON.parse(dataBack)--%>
+                    <%--        if (Array.prototype.isPrototypeOf(dataBackToList) && dataBackToList.length == 0){--%>
+                    <%--            //聊天对象是个人--%>
+                    <%--            membersList[1] = friendNickname--%>
+                    <%--            console.log("聊天对象是个人，他是：" + membersList)--%>
+                    <%--        } else {--%>
+                    <%--            //聊天对象是群--%>
+                    <%--            console.log("聊天对象是群：群成员是：" + dataBackToList)--%>
+                    <%--            for (var i = 1; i <= dataBackToList.length; i++){--%>
+                    <%--                membersList[i] = dataBackToList[i-1]--%>
+                    <%--            }--%>
+                    <%--        }--%>
+                    <%--    },--%>
+                    <%--    error: function(XMLHttpRequest, textStatus, errorThrown) {--%>
+                    <%--        console.log(XMLHttpRequest.status);--%>
+                    <%--        console.log(XMLHttpRequest.readyState);--%>
+                    <%--        console.log(textStatus);--%>
+                    <%--        console.log(errorThrown);--%>
+                    <%--    }--%>
+                    <%--})--%>
+                    <%--msg2.msgReceiverList = membersList--%>
                     //将消息对象(var2)转成JSON字符串
                     var msgSend = JSON.stringify(msg2)
-                    console.log(msgSend)
+                    // console.log(msgSend)
                     socket.send(msgSend)
                     sendMsgByAjax(makeupStr)
                     $('#summernote').summernote('reset');
@@ -757,15 +758,15 @@
 <%--    自添加标签--%>
     <div class="all">
         <dl class="list">
-            <a href="AddFriends.jsp">添加朋友</a><br/>
-            <a href="CreateRoom.jsp">发起群聊</a>
+            <a href="admin/AddFriends.jsp">添加朋友</a><br/>
+            <a href="admin/CreateRoom.jsp">发起群聊</a>
         </dl>
     </div>
 
 
     <div class="top">
         <div class="top-left">
-            <div class="header"><a href="PersonPage.html"></a></div>
+            <div class="header"><a href="admin/PersonPage.html">头像</a></div>
             <div class="search">
                 <input type="text">
                 <i class="icon-sear"></i>
@@ -773,8 +774,8 @@
         </div>
         <div class="top-type">
             <a class="news icon-site"></a>
-            <a href="FriendsList.html" class="friend icon-site" title="好友列表"></a>
-            <a href="http://localhost:8080/pages/RoomList.jsp" class="file icon-site"></a>
+            <a href="admin/FriendsList.html" class="friend icon-site" title="好友列表"></a>
+            <a href="http://localhost:8080/pages/admin/RoomList.jsp" class="file icon-site"></a>
             <a class="add icon-site" title="添加"></a>
         </div>
         <div class="top-right">

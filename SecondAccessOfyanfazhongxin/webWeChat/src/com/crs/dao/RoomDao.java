@@ -13,4 +13,11 @@ public interface RoomDao {
      * @return
      */
     public int createRoom(Room room);
+
+    /**
+     * 根据群昵称查询群
+     * @param roomNickname
+     * @return
+     */
+    public Room queryRoomByRoomNickname(String roomNickname);
 }

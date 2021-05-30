@@ -121,7 +121,7 @@
       //跳转到聊天界面
       $('.search-result').on('click', '.send_room-news', function (){
         var roomName = $(this).parent().parent().find('.title').text()
-        var url = "http://localhost:8080/pages/HomeTest.jsp?roomName="+roomName
+        var url = "http://localhost:8080/pages/admin/HomeTest.jsp?roomName="+roomName
         window.location.href = url
       })
 

@@ -23,9 +23,9 @@ public class Message {
      */
     private String msgReceiver;
     /**
-     * 接收者集合(群聊时)
+     * 群昵称(若是私聊，群昵称统一为发送者昵称 + “and” + 接收者昵称)
      */
-    private List msgReceiverList;
+    private String roomNickname;
     /**
      * 消息内容
      */
@@ -63,12 +63,12 @@ public class Message {
         this.msgReceiver = msgReceiver;
     }
 
-    public List getMsgReceiverList() {
-        return msgReceiverList;
+    public String getRoomNickname() {
+        return roomNickname;
     }
 
-    public void setMsgReceiverList(List msgReceiverList) {
-        this.msgReceiverList = msgReceiverList;
+    public void setRoomNickname(String roomNickname) {
+        this.roomNickname = roomNickname;
     }
 
     public String getMsgInfo() {
@@ -98,10 +98,11 @@ public class Message {
     public Message() {
     }
 
-    public Message(Integer msgId, String msgSender, String msgReceiver, String msgInfo, LocalDateTime msgDateTimeStr, Integer msgState) {
+    public Message(Integer msgId, String msgSender, String msgReceiver, String roomNickname, String msgInfo, LocalDateTime msgDateTimeStr, Integer msgState) {
         this.msgId = msgId;
         this.msgSender = msgSender;
         this.msgReceiver = msgReceiver;
+        this.roomNickname = roomNickname;
         this.msgInfo = msgInfo;
         this.msgDateTimeStr = msgDateTimeStr;
         this.msgState = msgState;
@@ -113,9 +114,10 @@ public class Message {
                 "msgId=" + msgId +
                 ", msgSender='" + msgSender + '\'' +
                 ", msgReceiver='" + msgReceiver + '\'' +
+                ", roomNickname='" + roomNickname + '\'' +
                 ", msgInfo='" + msgInfo + '\'' +
-                ", msgDateTimeStr='" + msgDateTimeStr + '\'' +
-                ", msgType='" + msgState + '\'' +
+                ", msgDateTimeStr=" + msgDateTimeStr +
+                ", msgState=" + msgState +
                 '}';
     }
 }

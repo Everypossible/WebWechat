@@ -40,5 +40,10 @@ public class MessageServiceImpl implements MessageService {
     public List queryFullMsgByUserNickname(String userNickname) {
         return messageDao.queryMessageByUserNickname(userNickname);
     }
+
+    @Override
+    public List queryMsgByRoomNickname(String roomNickname) {
+        return messageDao.queryMsgByRoomNickname(roomNickname);
+    }
 }
 

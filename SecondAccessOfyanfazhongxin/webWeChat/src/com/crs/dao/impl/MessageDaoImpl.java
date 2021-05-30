@@ -14,8 +14,8 @@ import java.util.List;
 public class MessageDaoImpl extends BaseDao<Message> implements MessageDao {
     @Override
     public int saveMessage(Message message) {
-        String sql = "insert into message(msgId,msgSender,msgReceiver,msgInfo,msgDateTimeStr,msgState)values(?,?,?,?,?,?)";
-        int flag = update(sql, message.getMsgId(), message.getMsgSender(), message.getMsgReceiver(), message.getMsgInfo(), message.getMsgDateTimeStr(), message.getMsgState());
+        String sql = "insert into message(msgId,msgSender,msgReceiver,roomNickname,msgInfo,msgDateTimeStr,msgState)values(?,?,?,?,?,?,?)";
+        int flag = update(sql, message.getMsgId(), message.getMsgSender(), message.getMsgReceiver(), message.getRoomNickname(), message.getMsgInfo(), message.getMsgDateTimeStr(), message.getMsgState());
         return flag;
     }
 
@@ -30,6 +30,13 @@ public class MessageDaoImpl extends BaseDao<Message> implements MessageDao {
     public List queryMessageByUserNickname(String userNickname) {
         String sql = "select * from message where msgReceiver=? or msgSender=? order by msgDateTimeStr asc";
         List<Message> messages = (List<Message>) getForList(sql, userNickname, userNickname);
+        return messages;
+    }
+
+    @Override
+    public List queryMsgByRoomNickname(String roomNickname) {
+        String sql = "select * from message where roomNickname = ? order by msgDateTimeStr asc";
+        List<Message> messages = (List<Message>) getForList(sql, roomNickname);
         return messages;
     }
 }

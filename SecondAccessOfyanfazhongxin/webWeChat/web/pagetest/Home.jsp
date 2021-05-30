@@ -88,7 +88,7 @@
 
         .main .top .top-left .search .icon-sear {
 
-            background-image: url("img/icon/search.png");
+            background-image: url("../pages/img/icon/search.png");
             background-size: 100% 100%;
             height: 28px;
             width: 28px;
@@ -114,17 +114,17 @@
         }
 
         .main .top .top-type .news {
-            background-image: url("img/icon/news.png");
+            background-image: url("../pages/img/icon/news.png");
 
         }
 
         .main .top .top-type .friend {
-            background-image: url("img/icon/friend.png");
+            background-image: url("../pages/img/icon/friend.png");
 
         }
 
         .main .top .top-type .file {
-            background-image: url("img/icon/file.png");
+            background-image: url("../pages/img/icon/file.png");
 
         }
 
@@ -148,7 +148,7 @@
 
         .main .top .top-right .ic-menu {
 
-            background-image: url("img/icon/menu.png");
+            background-image: url("../pages/img/icon/menu.png");
         }
 
         .main .top .top-right .ic-menu:hover {
@@ -156,7 +156,7 @@
         }
 
         .main .top .top-right .ic-shrink {
-            background-image: url("img/icon/shrink.png");
+            background-image: url("../pages/img/icon/shrink.png");
         }
 
         .main .top .top-right .ic-shrink:hover {
@@ -164,7 +164,7 @@
         }
 
         .main .top .top-right .ic-boost {
-            background-image: url("img/icon/boost.png");
+            background-image: url("../pages/img/icon/boost.png");
         }
 
         .main .top .top-right .ic-boost:hover {
@@ -172,7 +172,7 @@
         }
 
         .main .top .top-right .ic-close {
-            background-image: url("img/icon/close.png");
+            background-image: url("../pages/img/icon/close.png");
         }
 
         .main .top .top-right .ic-close:hover {
@@ -356,23 +356,23 @@
         }
 
         .main .box .box-right .sendto .but-nav ul li.font {
-            background-image: url("img/icon/font.png");
+            background-image: url("../pages/img/icon/font.png");
         }
 
         .main .box .box-right .sendto .but-nav ul li.face {
-            background-image: url("img/icon/face.png");
+            background-image: url("../pages/img/icon/face.png");
         }
 
         .main .box .box-right .sendto .but-nav ul li.cut {
-            background-image: url("img/icon/cut.png");
+            background-image: url("../pages/img/icon/cut.png");
         }
 
         .main .box .box-right .sendto .but-nav ul li.page {
-            background-image: url("img/icon/page.png");
+            background-image: url("../pages/img/icon/page.png");
         }
 
         .main .box .box-right .sendto .but-nav ul li.old {
-            background-image: url("img/icon/old.png");
+            background-image: url("../pages/img/icon/old.png");
         }
 
         .main .box .box-right .sendto .but-text textarea {
