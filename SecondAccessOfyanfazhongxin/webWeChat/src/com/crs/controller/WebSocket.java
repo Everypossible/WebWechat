@@ -54,7 +54,7 @@ public class  WebSocket {
 
         this.session = session;
         webSockets.put(this, userNickname);
-        System.out.println("***有新用户上线***");
+//        System.out.println("***有新用户上线***");
         msgSender = userNickname;
     }
     @OnClose
@@ -66,7 +66,7 @@ public class  WebSocket {
     // 给其他所有用户发送消息，不给自己发
     private void sendMsgToOthers(String message) {
         for (String key : realReceivers.keySet()) {
-            System.out.println("***" + this.session + "***" + realReceivers.get(key).session.getId());
+//            System.out.println("***" + this.session + "***" + realReceivers.get(key).session.getId());
             realReceivers.get(key).sendMessage(message);
         }
     }

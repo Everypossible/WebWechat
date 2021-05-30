@@ -54,9 +54,9 @@ public class RoomServlet extends BaseServlet{
     protected void queryRoomMemberByRoomName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Gson gson = new Gson();
         String roomName = req.getParameter("roomName");
-        System.out.println(roomName);
+//        System.out.println(roomName);
         String roomNameStr = gson.fromJson(roomName, String.class);
-        System.out.println(roomNameStr);
+//        System.out.println(roomNameStr);
         List<String> roomMembersList = userAndRoomService.queryRoomMemberByRoomName(roomNameStr);
 
         String roomMembersListJsonString = gson.toJson(roomMembersList);

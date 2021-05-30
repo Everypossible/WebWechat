@@ -38,7 +38,7 @@ public class FriendsServlet extends BaseServlet{
         String userNickname = (String) req.getSession().getAttribute("userNickname");
         Integer userId = userDetailsService.queryUserDetailsByNickname(userNickname).getUserId();
         List<UserDetails> friendsDetails = friendsService.showAllFriends(userId);
-        System.out.println("该用户好友有：" + friendsDetails.toString());
+//        System.out.println("该用户好友有：" + friendsDetails.toString());
 
         Gson gson = new Gson();
         String friendsDetailsJsonString = gson.toJson(friendsDetails);

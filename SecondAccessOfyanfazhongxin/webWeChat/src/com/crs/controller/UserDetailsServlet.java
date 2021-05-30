@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * @author RS
- * @Description: TODO
+ * @Description: 用户详情
  * @create 2021-05-13 21:08
  */
 public class UserDetailsServlet extends BaseServlet{
@@ -27,7 +27,7 @@ public class UserDetailsServlet extends BaseServlet{
      */
     protected void userDetailsSearch(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<UserDetails> userDetails = userDetailsService.queryUserDetailsByVagueNickname(req.getParameter("searchInfo"));
-        System.out.println(userDetails.toString());
+//        System.out.println(userDetails.toString());
 
         Gson gson = new Gson();
         String friendsDetailsJsonString = gson.toJson(userDetails);

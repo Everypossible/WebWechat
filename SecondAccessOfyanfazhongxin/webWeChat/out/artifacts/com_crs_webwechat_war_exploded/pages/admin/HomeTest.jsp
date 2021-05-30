@@ -741,7 +741,7 @@
         </div>
         <div class="top-type">
             <a class="news icon-site"></a>
-            <a href="admin/FriendsList.html" class="friend icon-site" title="好友列表"></a>
+            <a href="admin/FriendsList.jsp" class="friend icon-site" title="好友列表"></a>
             <a href="http://localhost:8080/pages/admin/RoomList.jsp" class="file icon-site"></a>
             <a class="add icon-site" title="添加"></a>
         </div>

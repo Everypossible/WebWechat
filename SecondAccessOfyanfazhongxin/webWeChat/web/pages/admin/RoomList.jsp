@@ -110,9 +110,8 @@
                               '</div>' +
                             '<div class="dropdown">' +
                               '<div class="send_room-news">发送群聊</div>' +
-                              '<div class="de-friend">拉黑好友</div>' +
-                              '<div class="delete-friend">删除好友</div>' +
-                              '<div>举报好友</div>' +
+                              '<div class="delete-friend">退出该群</div>' +
+                              '<div>举报该群</div>' +
                             '</div>' +
                           '</div>'
           $(addUsers).appendTo(".search-result");

@@ -99,12 +99,12 @@ public class UserServlet extends BaseServlet {
             //检查用户名是否已经存在
             if (userService.existsUsername(username)){
                 //用户名已存在
-                System.out.println("用户邮箱[" + username + "]已存在");
+//                System.out.println("用户邮箱[" + username + "]已存在");
                 //跳回注册页面
                 req.getRequestDispatcher("/pages/Register.jsp").forward(req, resp);
             } else if (userDetailsService.existsNickname(nickname)){
                 //用户名已存在
-                System.out.println("用户昵称[" + nickname + "]已存在");
+//                System.out.println("用户昵称[" + nickname + "]已存在");
                 //跳回注册页面
                 req.getRequestDispatcher("/pages/Register.jsp").forward(req, resp);
             } else {
@@ -137,7 +137,7 @@ public class UserServlet extends BaseServlet {
         String code = String.valueOf((int)(Math.random()*9000+1000));
         System.out.println(code);
         req.getSession().setAttribute("codeSend", code);
-        System.out.println(req.getSession().getAttribute("codeSend"));
+//        System.out.println(req.getSession().getAttribute("codeSend"));
         String emailAddress = req.getParameter("emailAddress");
         HtmlEmail htmlEmail = new HtmlEmail();
         htmlEmail.setHostName("smtp.163.com");
@@ -203,14 +203,14 @@ public class UserServlet extends BaseServlet {
         String codeInput = req.getParameter("input_code");
         Gson gson = new Gson();
         resp.setCharacterEncoding("utf-8");
-        System.out.println("接收到" + codeInput);
+//        System.out.println("接收到" + codeInput);
         if (req.getSession().getAttribute("codeSend").equals(codeInput)){
             //验证码输入正确
-            System.out.println("正确");
+//            System.out.println("正确");
             resp.getWriter().write(gson.toJson(1));
             return true;
         } else {
-            System.out.println("cuowu");
+//            System.out.println("cuowu");
             resp.getWriter().write(gson.toJson(0));
             return false;
         }
@@ -227,7 +227,7 @@ public class UserServlet extends BaseServlet {
         String username = req.getParameter("username");
         String newPassword = req.getParameter("newPassword");
         int flag = userService.updatePasswordByUsername(username, MD5Utils.toMD5(newPassword));
-        System.out.println(flag);
+//        System.out.println(flag);
         if (flag == 1){
             req.getRequestDispatcher("/pages/Login.html").forward(req, resp);
         } else {

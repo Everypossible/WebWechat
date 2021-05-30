@@ -687,8 +687,8 @@
                         <li id="li_repeat_password"><span style="color: red;">*</span>确认密码<input type="password" name="input_repeat_password" id="repeat-id">
                         </li>
                             <div id="sRepeatPassword"></div>
-                        <li id="li_sex"><span style="color: red;">*</span>我的性别<input type="radio" name="sex" id="radio_man" checked>男<input
-                                type="radio" name="sex" id="radio_woman">女
+                        <li id="li_sex"><span style="color: red;">*</span>我的性别<input type="radio" name="sex" id="radio_man" value="man" checked>男<input
+                                type="radio" name="sex" id="radio_woman" value="woman">女
                         </li>
                             <div id="sSex"></div>
                         <li id="li_birth"><span style="color: red;">*</span>我的生日

@@ -1,4 +1,4 @@
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,9 +92,15 @@
   <script>
     window.onload = function () {
       //点击展示下拉菜单
-      $('.friend-box').on('click', function (){
+      $('.search-result').on('click', '.friend-box', function (){
         // alert("点中了")
         $(this).next().toggleClass('show')
+      })
+      //点击发送消息，跳转到聊天界面
+      $('.search-result').on('click', '.send_room-news', function (){
+        var roomName = $(this).parent().parent().find('.title').text()
+        var url = "http://localhost:8080/pages/admin/HomeTest.jsp?roomName="+roomName
+        window.location.href = url
       })
       //点击拉黑好友
       $('.de-friend').on('click', function () {
@@ -198,13 +204,20 @@
         for (var i in FriendsListJson) {
           // alert(allFriendsListJson[i].nickname)
           var addUsers = '<div class="list-box">' +
-                  '<img class="chat-head" src="" alt="">' +
-                  '<div class="chat-rig">' +
-                  '<p class="title">' + FriendsListJson[i].nickname + '</p>' +
-                  '<p class="text">紧急！！！</p>' +
-                  '</div>' +
-                  '<button class="add-button">添加</button>' +
-                  '</div>';
+                            '<div class="friend-box">' +
+                              '<img class="chat-head" src="" alt="">' +
+                                '<div class="chat-rig">' +
+                                  '<p class="title">' + FriendsListJson[i].nickname + '</p>' +
+                                  '<p class="text">' + '个性签名' + '</p>' +
+                                '</div>' +
+                            '</div>' +
+                            '<div class="dropdown">' +
+                              '<div class="send_room-news">发送消息</div>' +
+                              '<div class="de-friend">拉黑好友</div>' +
+                              '<div class="delete-friend">删除好友</div>' +
+                              '<div>举报好友</div>' +
+                            '</div>' +
+                          '</div>';
           $(addUsers).appendTo(".search-result");
         }
       }

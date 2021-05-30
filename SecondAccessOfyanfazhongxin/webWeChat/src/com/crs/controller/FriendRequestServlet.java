@@ -27,7 +27,7 @@ public class FriendRequestServlet extends BaseServlet{
      * @throws IOException
      */
     protected void saveFriendRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println(req.getParameter("friendRequest"));
+//        System.out.println(req.getParameter("friendRequest"));
         Gson gson = new Gson();
         FriendRequest friendRequest = gson.fromJson(req.getParameter("friendRequest"), FriendRequest.class);
         friendRequestService.addFriendRequest(friendRequest);
@@ -37,7 +37,7 @@ public class FriendRequestServlet extends BaseServlet{
         String receiverNickname = (String) req.getSession().getAttribute("userNickname");
         List<FriendRequest> friendRequestList = friendRequestService.queryFriendRequestByNickname(receiverNickname);
 
-        System.out.println(friendRequestList);
+//        System.out.println(friendRequestList);
         Gson gson = new Gson();
         String requestListJsonString = gson.toJson(friendRequestList);
         resp.setCharacterEncoding("utf-8");

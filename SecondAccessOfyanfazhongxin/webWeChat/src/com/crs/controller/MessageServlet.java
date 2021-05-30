@@ -40,11 +40,11 @@ public class MessageServlet extends BaseServlet{
         String receiver = msg.getMsgReceiver();
         String msgInfo = msg.getMsgInfo();
         String roomNickname = null;
-        System.out.println(roomService.isExistRoom(receiver));
+//        System.out.println(roomService.isExistRoom(receiver));
         if (roomService.isExistRoom(receiver) == 0) {
             //群数据库中查询不到该群，证明这是一对一聊天
             roomNickname = sender + "and" + receiver;
-            System.out.println("一对一聊天的群名是：" + roomNickname);
+//            System.out.println("一对一聊天的群名是：" + roomNickname);
         } else {
             roomNickname = receiver;
         }
@@ -71,7 +71,7 @@ public class MessageServlet extends BaseServlet{
     }
     protected void getMsgRecordByRoomNickname(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Message> messageList = messageService.queryMsgByRoomNickname(req.getParameter("roomNickname"));
-        System.out.println(messageList);
+//        System.out.println(messageList);
 
         Gson gson = new Gson();
         String messageListJsonString = gson.toJson(messageList);
