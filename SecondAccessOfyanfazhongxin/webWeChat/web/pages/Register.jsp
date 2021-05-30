@@ -186,9 +186,6 @@
             position: absolute;
             left:105px;
             top:472px;
-            /*background-color:pink;*/
-            /*border: solid 1px #D4D4D4;*/
-
         }
         #sSex{
             width: 335px;
@@ -197,8 +194,6 @@
             position: absolute;
             left:105px;
             top:532px;
-            /*background-color:pink;*/
-            /*border: solid 1px #D4D4D4;*/
         }
         #sBirth{
             width: 335px;
@@ -207,8 +202,6 @@
             position: absolute;
             left:105px;
             top:592px;
-            /*background-color:pink;*/
-            /*border: solid 1px #D4D4D4;*/
         }
         #sAddr{
             width: 335px;
@@ -217,8 +210,6 @@
             position: absolute;
             left:105px;
             top:652px;
-            /*background-color:pink;*/
-            /*border: solid 1px #D4D4D4;*/
         }
         #sDesc{
             width: 335px;
@@ -227,8 +218,6 @@
             position: absolute;
             left:105px;
             top:712px;
-            /*background-color:pink;*/
-            /*border: solid 1px #D4D4D4;*/
         }
         #last{
             width:270px;
@@ -502,14 +491,6 @@
                 return judge;
             }
 
-            // //密码重复输入框是否可编辑
-            // $('#repeat-id').click(){
-            //     if ($(this).val().length == 0 && typeof($(this).attr("disabled")) == "undefined"){
-            //         $(this).attr("disabled", "disabled")
-            //     } else {
-            //         $(this).removeAttr("disabled")
-            //     }
-            // }
             //校验确认密码
             function checkRePassword(){
                 //1.获取密码的值

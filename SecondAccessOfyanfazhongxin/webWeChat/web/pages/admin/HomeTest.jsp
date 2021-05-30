@@ -633,39 +633,6 @@
                     msg2.roomNickname = $("#nav-top-p").text()
                     msg2.msgSender = "${sessionScope.userNickname}"
                     msg2.msgReceiver = $("#nav-top-p").text()
-                    <%--//获取群成员的昵称--%>
-                    <%--var membersList = new Array()--%>
-                    <%--$.ajax({--%>
-                    <%--    url: "http://localhost:8080/RoomServlet",--%>
-                    <%--    type: 'post',--%>
-                    <%--    async: false,--%>
-                    <%--    //这里的friendNickname是上方定义的全局变量，表示双击时获取到的好友(个人或群)的昵称--%>
-                    <%--    data: {"roomName":friendNickname, "action":"queryRoomMemberByRoomName"},--%>
-                    <%--    // data: {"roomName":"动态元素", "action":"queryRoomMemberByRoomName"},--%>
-                    <%--    success: function (dataBack){--%>
-                    <%--        //加双引号保证昵称是字符串，避免昵称是数字时因var的弱类型而识别为数字--%>
-                    <%--        membersList[0] = "${sessionScope.userNickname}"--%>
-                    <%--        var dataBackToList = JSON.parse(dataBack)--%>
-                    <%--        if (Array.prototype.isPrototypeOf(dataBackToList) && dataBackToList.length == 0){--%>
-                    <%--            //聊天对象是个人--%>
-                    <%--            membersList[1] = friendNickname--%>
-                    <%--            console.log("聊天对象是个人，他是：" + membersList)--%>
-                    <%--        } else {--%>
-                    <%--            //聊天对象是群--%>
-                    <%--            console.log("聊天对象是群：群成员是：" + dataBackToList)--%>
-                    <%--            for (var i = 1; i <= dataBackToList.length; i++){--%>
-                    <%--                membersList[i] = dataBackToList[i-1]--%>
-                    <%--            }--%>
-                    <%--        }--%>
-                    <%--    },--%>
-                    <%--    error: function(XMLHttpRequest, textStatus, errorThrown) {--%>
-                    <%--        console.log(XMLHttpRequest.status);--%>
-                    <%--        console.log(XMLHttpRequest.readyState);--%>
-                    <%--        console.log(textStatus);--%>
-                    <%--        console.log(errorThrown);--%>
-                    <%--    }--%>
-                    <%--})--%>
-                    <%--msg2.msgReceiverList = membersList--%>
                     //将消息对象(var2)转成JSON字符串
                     var msgSend = JSON.stringify(msg2)
                     // console.log(msgSend)
@@ -807,14 +774,6 @@
 <%--                            <div class="msg">--%>
 <%--                                <p class="msg-name">宋温暖</p>--%>
 <%--                                <p class="msg-text">请接下这个活 <emoji class="pizza"></emoji></p>--%>
-<%--                                <time>20:18</time>--%>
-<%--                            </div>--%>
-<%--                        </li>--%>
-<%--                        <li class="self">--%>
-<%--                            <div class="avatar"><img src="" alt=""></div>--%>
-<%--                            <div class="msg">--%>
-<%--                                <p class="msg-name">安安安</p>--%>
-<%--                                <p class="msg-text">请接下这个下这个活请接下接下这个活请接下接下这个活请接下下这个活请接下这个活<emoji class="pizza"></emoji></p>--%>
 <%--                                <time>20:18</time>--%>
 <%--                            </div>--%>
 <%--                        </li>--%>

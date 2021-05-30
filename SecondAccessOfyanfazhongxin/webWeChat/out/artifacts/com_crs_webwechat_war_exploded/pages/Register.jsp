@@ -501,15 +501,7 @@
                 }
                 return judge;
             }
-
-            // //密码重复输入框是否可编辑
-            // $('#repeat-id').click(){
-            //     if ($(this).val().length == 0 && typeof($(this).attr("disabled")) == "undefined"){
-            //         $(this).attr("disabled", "disabled")
-            //     } else {
-            //         $(this).removeAttr("disabled")
-            //     }
-            // }
+            
             //校验确认密码
             function checkRePassword(){
                 //1.获取密码的值

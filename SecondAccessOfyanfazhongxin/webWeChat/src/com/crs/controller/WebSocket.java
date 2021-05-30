@@ -1,35 +1,24 @@
 package com.crs.controller;
 import com.crs.entity.Message;
-import com.crs.entity.UserAndRoom;
 import com.crs.service.RoomService;
 import com.crs.service.UserAndRoomService;
 import com.crs.service.impl.RoomServiceImpl;
 import com.crs.service.impl.UserAndRoomServiceImpl;
-import com.crs.utils.WebUtils;
-import com.crs.utils.WebsocketUtils;
 import com.google.gson.Gson;
 
 
-import javax.imageio.ImageIO;
-import javax.sound.sampled.AudioFormat;
 import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.Console;
-import java.io.File;
 import java.io.IOException;
 
-import java.nio.ByteBuffer;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
  * @author RS
@@ -59,9 +48,6 @@ public class  WebSocket {
     private Session session;
     private Message message = null;
     private String msgSender;
-    private final int TYPE_ENTER = 0;
-    private final int TYPE_LEAVE = 1;
-    private final int TYPE_MSG = 2;
 
     @OnOpen
     public void onOpen(@PathParam (value = "userNickname") String userNickname, Session session) {
@@ -70,22 +56,11 @@ public class  WebSocket {
         webSockets.put(this, userNickname);
         System.out.println("***有新用户上线***");
         msgSender = userNickname;
-//        this.message = new Message(null, String.valueOf(this.session.getId()), null,
-//                "用户" + this.session.getId() + "： 进入了聊天室",
-//                LocalDateTime.ofInstant(new Date().toInstant(), ZoneId.systemDefault()), 0);
-//        Gson gson = new Gson();
-//        sendMsgToOthers(gson.toJson(this.message));
     }
     @OnClose
     public void onClose(Session session) {
         this.session = session;
         webSockets.remove(this);
-//        this.message = new Message(null, String.valueOf(this.session.getId()), null,
-//                "用户" + this.session.getId() + "： 离开了聊天室",
-//                LocalDateTime.ofInstant(new Date().toInstant(), ZoneId.systemDefault()), 0);
-//        System.out.println(this.message);
-//        Gson gson = new Gson();
-//        sendMsgToOthers(gson.toJson(this.message));
     }
 
     // 给其他所有用户发送消息，不给自己发
@@ -133,7 +108,7 @@ public class  WebSocket {
             }
         }
 
-        // 当有消息来临时，给除去自己外的所有人发送消息
+        // 当有消息来临时，给所有人发送消息
         this.message = new Message(null, msgSender, null, null, message1.getMsgInfo(),
                 LocalDateTime.ofInstant(new Date().toInstant(), ZoneId.systemDefault()), 0);
         sendMsgToOthers(gson.toJson(this.message));
